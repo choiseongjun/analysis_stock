@@ -1,0 +1,1 @@
+{'url': 'https://oauth.reddit.com/r/software/hot.json?limit=100', 'method': 'GET', 'status': 200, 'response_url': 'https://oauth.reddit.com/r/software/hot.json?limit=100', 'timestamp': 1759497208.568035}

@@ -1,0 +1,209 @@
+version: '3.8'
+
+services:
+  # MongoDB - 비정형 데이터 저장소
+  mongodb:
+    image: mongo:7.0
+    container_name: stock_trends_mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+      MONGO_INITDB_DATABASE: stock_tech_trends
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+    networks:
+      - stock_trends_network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MongoDB Express - MongoDB 관리 UI
+  mongo-express:
+    image: mongo-express:latest
+    container_name: stock_trends_mongo_express
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin123
+      ME_CONFIG_MONGODB_URL: mongodb://admin:admin123@mongodb:27017/
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+    depends_on:
+      - mongodb
+    networks:
+      - stock_trends_network
+
+  # PostgreSQL - 정형 데이터 저장소
+  postgres:
+    image: postgres:16
+    container_name: stock_trends_postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: stock_user
+      POSTGRES_PASSWORD: stock_pass123
+      POSTGRES_DB: stock_trends
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres-init:/docker-entrypoint-initdb.d
+    networks:
+      - stock_trends_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stock_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # pgAdmin - PostgreSQL 관리 UI
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: stock_trends_pgadmin
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@stock-trends.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - stock_trends_network
+
+  # Redis - 캐싱 및 메시지 큐
+  redis:
+    image: redis:7-alpine
+    container_name: stock_trends_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --requirepass redis123
+    volumes:
+      - redis_data:/data
+    networks:
+      - stock_trends_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Commander - Redis 관리 UI
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: stock_trends_redis_commander
+    restart: always
+    ports:
+      - "8082:8081"
+    environment:
+      REDIS_HOSTS: local:redis:6379:0:redis123
+    depends_on:
+      - redis
+    networks:
+      - stock_trends_network
+
+  # Celery Worker - 백그라운드 작업
+  celery-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: stock_trends_celery_worker
+    restart: always
+    command: celery -A celery_app worker --loglevel=info
+    environment:
+      REDIS_URL: redis://:redis123@redis:6379/0
+      MONGODB_URI: mongodb://admin:admin123@mongodb:27017
+      POSTGRES_URL: postgresql://stock_user:stock_pass123@postgres:5432/stock_trends
+    volumes:
+      - ./:/app
+    depends_on:
+      - redis
+      - mongodb
+      - postgres
+    networks:
+      - stock_trends_network
+
+  # Celery Beat - 스케줄러
+  celery-beat:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: stock_trends_celery_beat
+    restart: always
+    command: celery -A celery_app beat --loglevel=info
+    environment:
+      REDIS_URL: redis://:redis123@redis:6379/0
+      MONGODB_URI: mongodb://admin:admin123@mongodb:27017
+      POSTGRES_URL: postgresql://stock_user:stock_pass123@postgres:5432/stock_trends
+    volumes:
+      - ./:/app
+    depends_on:
+      - redis
+      - mongodb
+      - postgres
+    networks:
+      - stock_trends_network
+
+  # Flower - Celery 모니터링 UI
+  flower:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: stock_trends_flower
+    restart: always
+    ports:
+      - "5555:5555"
+    command: celery -A celery_app flower --port=5555
+    environment:
+      REDIS_URL: redis://:redis123@redis:6379/0
+    depends_on:
+      - redis
+      - celery-worker
+    networks:
+      - stock_trends_network
+
+  # Grafana - 모니터링 대시보드
+  grafana:
+    image: grafana/grafana:latest
+    container_name: stock_trends_grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin123
+      GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - mongodb
+      - postgres
+    networks:
+      - stock_trends_network
+
+volumes:
+  mongodb_data:
+    driver: local
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+  grafana_data:
+    driver: local
+
+networks:
+  stock_trends_network:
+    driver: bridge

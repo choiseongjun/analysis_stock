@@ -1,0 +1,374 @@
+{
+  "analysis_date": "2025-10-04T07:12:27.168591",
+  "total_posts": 2639,
+  "keyword_trends": {
+    "AR": 2155,
+    "AI": 1489,
+    "share": 266,
+    "stock": 174,
+    "python": 144,
+    "docker": 122,
+    "investment": 98,
+    "growth": 82,
+    "kubernetes": 79,
+    "NLP": 74,
+    "IoT": 60,
+    "portfolio": 58,
+    "revenue": 54,
+    "profit": 53,
+    "react": 53,
+    "chatgpt": 52,
+    "valuation": 50,
+    "javascript": 43,
+    "openai": 41,
+    "robotics": 39
+  },
+  "sentiment_distribution": {
+    "positive": 1878,
+    "negative": 425,
+    "neutral": 336
+  },
+  "top_subreddits": {
+    "stocks": 99,
+    "startups": 98,
+    "Python": 98,
+    "ValueInvesting": 98,
+    "investing": 98,
+    "docker": 97,
+    "datascience": 94,
+    "gadgets": 94,
+    "quantumcomputing": 94,
+    "MachineLearning": 94,
+    "artificial": 93,
+    "kubernetes": 93,
+    "cloudcomputing": 90,
+    "hardware": 89,
+    "webdev": 88
+  },
+  "engagement_metrics": {
+    "avg_score": 194.58507010231148,
+    "avg_comments": 31.846911708980674,
+    "avg_upvote_ratio": 0.7510306934444867
+  },
+  "stock_tickers": {
+    "TSLA": {
+      "count": 8,
+      "avg_score": 38.625,
+      "avg_comments": 42.25,
+      "sentiment": "positive",
+      "category": "Electric Vehicles",
+      "subreddits": [
+        "ValueInvesting",
+        "stocks",
+        "bitcoin",
+        "SecurityAnalysis"
+      ]
+    },
+    "AMD": {
+      "count": 7,
+      "avg_score": 202.71428571428572,
+      "avg_comments": 87.71428571428571,
+      "sentiment": "positive",
+      "category": "Semiconductors",
+      "subreddits": [
+        "stocks",
+        "hardware"
+      ]
+    },
+    "IBM": {
+      "count": 7,
+      "avg_score": 21.0,
+      "avg_comments": 10.0,
+      "sentiment": "positive",
+      "category": "Cloud/Software",
+      "subreddits": [
+        "stocks",
+        "cloudcomputing",
+        "software",
+        "quantumcomputing"
+      ]
+    },
+    "GOOGL": {
+      "count": 5,
+      "avg_score": 94.8,
+      "avg_comments": 42.4,
+      "sentiment": "positive",
+      "category": "Big Tech",
+      "subreddits": [
+        "ValueInvesting",
+        "stocks"
+      ]
+    },
+    "NET": {
+      "count": 5,
+      "avg_score": 15.8,
+      "avg_comments": 6.0,
+      "sentiment": "positive",
+      "category": "Cloud/Software",
+      "subreddits": [
+        "devops",
+        "cloudcomputing",
+        "computervision",
+        "azure"
+      ]
+    },
+    "NVDA": {
+      "count": 4,
+      "avg_score": 57.25,
+      "avg_comments": 38.75,
+      "sentiment": "positive",
+      "category": "Semiconductors",
+      "subreddits": [
+        "ValueInvesting",
+        "stocks",
+        "investing"
+      ]
+    },
+    "VOO": {
+      "count": 4,
+      "avg_score": 30.25,
+      "avg_comments": 71.75,
+      "sentiment": "positive",
+      "category": "ETF",
+      "subreddits": [
+        "investing"
+      ]
+    },
+    "AMZN": {
+      "count": 3,
+      "avg_score": 65.33333333333333,
+      "avg_comments": 10.333333333333334,
+      "sentiment": "positive",
+      "category": "Big Tech",
+      "subreddits": [
+        "stocks",
+        "investing"
+      ]
+    },
+    "EA": {
+      "count": 3,
+      "avg_score": 236.66666666666666,
+      "avg_comments": 60.0,
+      "sentiment": "positive",
+      "category": "Other",
+      "subreddits": [
+        "stocks",
+        "investing"
+      ]
+    },
+    "MSFT": {
+      "count": 3,
+      "avg_score": 149.66666666666666,
+      "avg_comments": 63.333333333333336,
+      "sentiment": "positive",
+      "category": "Big Tech",
+      "subreddits": [
+        "ValueInvesting",
+        "stocks"
+      ]
+    },
+    "TSM": {
+      "count": 3,
+      "avg_score": 0.6666666666666666,
+      "avg_comments": 32.666666666666664,
+      "sentiment": "positive",
+      "category": "Semiconductors",
+      "subreddits": [
+        "ValueInvesting"
+      ]
+    },
+    "INTC": {
+      "count": 2,
+      "avg_score": 9.5,
+      "avg_comments": 29.0,
+      "sentiment": "positive",
+      "category": "Semiconductors",
+      "subreddits": [
+        "ValueInvesting",
+        "investing"
+      ]
+    },
+    "GOOG": {
+      "count": 2,
+      "avg_score": 18.0,
+      "avg_comments": 37.0,
+      "sentiment": "positive",
+      "category": "Big Tech",
+      "subreddits": [
+        "investing",
+        "SecurityAnalysis"
+      ]
+    },
+    "META": {
+      "count": 2,
+      "avg_score": 118.0,
+      "avg_comments": 54.5,
+      "sentiment": "positive",
+      "category": "Big Tech",
+      "subreddits": [
+        "ValueInvesting",
+        "stocks"
+      ]
+    },
+    "NFLX": {
+      "count": 1,
+      "avg_score": 0.0,
+      "avg_comments": 3.0,
+      "sentiment": "positive",
+      "category": "Other",
+      "subreddits": [
+        "investing"
+      ]
+    },
+    "BBAI": {
+      "count": 1,
+      "avg_score": 0.0,
+      "avg_comments": 5.0,
+      "sentiment": "positive",
+      "category": "AI/Data",
+      "subreddits": [
+        "investing"
+      ]
+    },
+    "SOFI": {
+      "count": 1,
+      "avg_score": 0.0,
+      "avg_comments": 5.0,
+      "sentiment": "positive",
+      "category": "Fintech",
+      "subreddits": [
+        "investing"
+      ]
+    },
+    "XPEV": {
+      "count": 1,
+      "avg_score": 0.0,
+      "avg_comments": 5.0,
+      "sentiment": "positive",
+      "category": "Electric Vehicles",
+      "subreddits": [
+        "investing"
+      ]
+    },
+    "QQQ": {
+      "count": 1,
+      "avg_score": 0.0,
+      "avg_comments": 7.0,
+      "sentiment": "positive",
+      "category": "ETF",
+      "subreddits": [
+        "investing"
+      ]
+    },
+    "SPY": {
+      "count": 1,
+      "avg_score": 0.0,
+      "avg_comments": 2.0,
+      "sentiment": "negative",
+      "category": "ETF",
+      "subreddits": [
+        "stocks"
+      ]
+    },
+    "CRM": {
+      "count": 1,
+      "avg_score": 36.0,
+      "avg_comments": 59.0,
+      "sentiment": "positive",
+      "category": "Cloud/Software",
+      "subreddits": [
+        "SecurityAnalysis"
+      ]
+    },
+    "HOOD": {
+      "count": 1,
+      "avg_score": 36.0,
+      "avg_comments": 59.0,
+      "sentiment": "positive",
+      "category": "Fintech",
+      "subreddits": [
+        "SecurityAnalysis"
+      ]
+    },
+    "UBER": {
+      "count": 1,
+      "avg_score": 36.0,
+      "avg_comments": 59.0,
+      "sentiment": "positive",
+      "category": "Other",
+      "subreddits": [
+        "SecurityAnalysis"
+      ]
+    },
+    "MELI": {
+      "count": 1,
+      "avg_score": 6.0,
+      "avg_comments": 2.0,
+      "sentiment": "positive",
+      "category": "Other",
+      "subreddits": [
+        "SecurityAnalysis"
+      ]
+    },
+    "AAPL": {
+      "count": 1,
+      "avg_score": 212.0,
+      "avg_comments": 102.0,
+      "sentiment": "positive",
+      "category": "Big Tech",
+      "subreddits": [
+        "ValueInvesting"
+      ]
+    },
+    "COIN": {
+      "count": 1,
+      "avg_score": 0.0,
+      "avg_comments": 16.0,
+      "sentiment": "positive",
+      "category": "Fintech",
+      "subreddits": [
+        "ValueInvesting"
+      ]
+    },
+    "BABA": {
+      "count": 1,
+      "avg_score": 28.0,
+      "avg_comments": 40.0,
+      "sentiment": "positive",
+      "category": "Other",
+      "subreddits": [
+        "ValueInvesting"
+      ]
+    },
+    "JD": {
+      "count": 1,
+      "avg_score": 28.0,
+      "avg_comments": 40.0,
+      "sentiment": "positive",
+      "category": "Other",
+      "subreddits": [
+        "ValueInvesting"
+      ]
+    },
+    "PYPL": {
+      "count": 1,
+      "avg_score": 1.0,
+      "avg_comments": 12.0,
+      "sentiment": "positive",
+      "category": "Fintech",
+      "subreddits": [
+        "ValueInvesting"
+      ]
+    },
+    "PLTR": {
+      "count": 1,
+      "avg_score": 13.0,
+      "avg_comments": 54.0,
+      "sentiment": "neutral",
+      "category": "AI/Data",
+      "subreddits": [
+        "ValueInvesting"
+      ]
+    }
+  }
+}

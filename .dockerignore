@@ -1,0 +1,63 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# 로컬 개발 파일
+.env
+.env.local
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 데이터 파일
+data/
+*.json
+*.csv
+*.db
+*.sqlite
+
+# 캐시
+.scrapy
+httpcache/
+.pytest_cache/
+.coverage
+
+# 문서
+docs/
+*.md
+README.md
+
+# Docker
+docker-compose.yml
+Dockerfile*
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 빌드 산출물
+dist/
+build/
+*.egg-info/
+
+# 테스트
+tests/
+test_*.py
+
